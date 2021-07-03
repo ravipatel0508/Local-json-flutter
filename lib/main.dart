@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:json_example/drawer_example.dart';
 import 'package:json_example/json_online.dart';
 import 'package:json_example/local_json.dart';
 
@@ -14,6 +15,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "JSON Example",
       home: HomePage(),
+      routes: {
+        "newPage" : (BuildContext context) => DrawerExample()
+      },
     );
   }
 }
@@ -56,6 +60,35 @@ class _HomePageState extends State<HomePage> {
         ],
         onTap: _onItemTapped,
         currentIndex: _selectedItem,
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            UserAccountsDrawerHeader(
+                accountName: Text("Ravi"),
+                accountEmail: Text("Ravi@gmail.com"),
+              currentAccountPicture: CircleAvatar(
+                child: Text("R"),
+              ),
+              otherAccountsPictures: [CircleAvatar(
+                child: Text("P"),
+              )],
+            ),
+            ListTile(
+              title: Text("Page1"),
+              trailing: Icon(Icons.ac_unit),
+              onTap: (){
+                Navigator.of(context).pushNamed("newPage");
+              }
+            ),
+            Divider(indent: 10,endIndent: 10,thickness: 2,),
+            ListTile(
+              title: Text("Close"),
+              trailing: Icon(Icons.backspace_outlined),
+              onTap: ()=> Navigator.of(context).pop(),
+            )
+          ],
+        ),
       ),
     );
   }
