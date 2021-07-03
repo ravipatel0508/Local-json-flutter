@@ -22,13 +22,16 @@ class _LocalJSONState extends State<LocalJSON> {
           return ListView.builder(
             itemBuilder: (BuildContext context, int index) {
               return Card(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text("Name: " + mydata[index]['name']),
-                    Text("Age: " + mydata[index]['age']),
-                    Text("Gender: " + mydata[index]['gender']),
-                  ],
+                child: Container(
+                  padding: EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text("Name: " + mydata[index]['name']),
+                      Text("Age: " + mydata[index]['age']),
+                      Text("Gender: " + mydata[index]['gender']),
+                    ],
+                  ),
                 ),
               );
             },

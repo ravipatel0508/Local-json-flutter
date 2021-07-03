@@ -51,23 +51,29 @@ class _OnlineJSONState extends State<OnlineJSON> {
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text("State: "),
-                                Text("Active Case: "),
-                                Text("Confirmed Case: "),
-                                Text("Total death: "),
-                              ],
+                            Expanded(
+                              flex: 1,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text("State: "),
+                                  Text("Active Case: "),
+                                  Text("Confirmed Case: "),
+                                  Text("Total death: "),
+                                ],
+                              ),
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(data[index]['state']),
-                                Text(data[index]['active']),
-                                Text(data[index]['confirmed']),
-                                Text(data[index]['deaths']),
-                              ],
+                            Expanded(
+                              flex: 2,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(data[index]['state']),
+                                  Text(data[index]['active']),
+                                  Text(data[index]['confirmed']),
+                                  Text(data[index]['deaths']),
+                                ],
+                              ),
                             ),
                           ],
                         ),
