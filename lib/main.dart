@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:json_example/DeltaJson.dart';
 import 'package:json_example/drawer_example.dart';
 import 'package:json_example/json_online.dart';
 import 'package:json_example/local_json.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -32,7 +34,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedItem = 0;
 
-  List _widgetOption = [OnlineJSON(),LocalJSON()];
+  List _widgetOption = [OnlineJSON(),DeltaJson(),LocalJSON()];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -50,9 +52,13 @@ class _HomePageState extends State<HomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: Icon(Icons.wifi_tethering),
-              label: 'Online JSON',
+              icon: Icon(Icons.coronavirus),
+              label: 'Covid',
               backgroundColor: Colors.amberAccent),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.coronavirus_outlined),
+            label: 'Delta Case',
+            backgroundColor: Colors.blue),
           BottomNavigationBarItem(
               icon: Icon(Icons.home_filled),
               label: 'Local JSON',
@@ -78,6 +84,7 @@ class _HomePageState extends State<HomePage> {
               title: Text("Page1"),
               trailing: Icon(Icons.ac_unit),
               onTap: (){
+                Navigator.of(context).pop();
                 Navigator.of(context).pushNamed("newPage");
               }
             ),

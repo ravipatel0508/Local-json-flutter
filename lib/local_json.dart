@@ -24,12 +24,31 @@ class _LocalJSONState extends State<LocalJSON> {
               return Card(
                 child: Container(
                   padding: EdgeInsets.all(20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Name: " + mydata[index]['name']),
-                      Text("Age: " + mydata[index]['age']),
-                      Text("Gender: " + mydata[index]['gender']),
+                      Expanded(
+                        flex: 1,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Name:"),
+                            Text("Age:"),
+                            Text("Gender:"),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        flex: 4,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(mydata[index]['name']),
+                            Text(mydata[index]['age']),
+                            Text(mydata[index]['gender']),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),

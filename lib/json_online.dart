@@ -27,8 +27,7 @@ class _OnlineJSONState extends State<OnlineJSON> {
         await http.get(Uri.parse(url), headers: {"Accept": "application/json"});
 
     setState(() {
-      var convertDataToJson = jsonDecode(response.body);
-      data = convertDataToJson['statewise'];
+      data = jsonDecode(response.body)['statewise'];
       isData = true;
     });
 
@@ -59,6 +58,7 @@ class _OnlineJSONState extends State<OnlineJSON> {
                                   Text("State: "),
                                   Text("Active Case: "),
                                   Text("Confirmed Case: "),
+                                  Text("Total recovered: "),
                                   Text("Total death: "),
                                 ],
                               ),
@@ -71,6 +71,7 @@ class _OnlineJSONState extends State<OnlineJSON> {
                                   Text(data[index]['state']),
                                   Text(data[index]['active']),
                                   Text(data[index]['confirmed']),
+                                  Text(data[index]['recovered']),
                                   Text(data[index]['deaths']),
                                 ],
                               ),
