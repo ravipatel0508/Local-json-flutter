@@ -12,7 +12,7 @@ class OnlineJSON extends StatefulWidget {
 }
 
 class _OnlineJSONState extends State<OnlineJSON> {
-  final String url = "https://api.covid19india.org/data.json";
+  final String url = "https://api.apify.com/v2/key-value-stores/toDWvRj1JpTXiM8FF/records/LATEST?disableRedirect=true";
   late List data;
   bool isData = false;
 
@@ -27,7 +27,7 @@ class _OnlineJSONState extends State<OnlineJSON> {
         await http.get(Uri.parse(url), headers: {"Accept": "application/json"});
 
     setState(() {
-      data = jsonDecode(response.body)['statewise'];
+      data = jsonDecode(response.body)['regionData'];
       isData = true;
     });
 
@@ -56,8 +56,7 @@ class _OnlineJSONState extends State<OnlineJSON> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text("State: "),
-                                  Text("Active Case: "),
-                                  Text("Confirmed Case: "),
+                                  Text("newInfected: "),
                                   Text("Total recovered: "),
                                   Text("Total death: "),
                                 ],
@@ -68,11 +67,10 @@ class _OnlineJSONState extends State<OnlineJSON> {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(data[index]['state']),
-                                  Text(data[index]['active']),
-                                  Text(data[index]['confirmed']),
-                                  Text(data[index]['recovered']),
-                                  Text(data[index]['deaths']),
+                                  Text(data[index]['region']),
+                                  Text(data[index]['newInfected'].toString()),
+                                  Text(data[index]['newRecovered'].toString()),
+                                  Text(data[index]['deceased'].toString()),
                                 ],
                               ),
                             ),
