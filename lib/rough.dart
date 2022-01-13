@@ -93,7 +93,7 @@ class _OnlineJSONState extends State<OnlineJSON> {
         child: FutureBuilder(
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return Text(xyz);
+              return Text('${xyz}');
             } else if (snapshot.hasError) {
               return Text('${snapshot.error}');
             }
